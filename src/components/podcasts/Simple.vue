@@ -1,6 +1,6 @@
 <template>
     <div class="podcast">
-        <a href="#" class="podcast__play podcast__play--hidden">
+        <a href="#" class="podcast__play" @click.prevent="switchPodcast(podcast.id)">
             <img src="../../assets/img/play.svg" alt="Play" class="podcast__playbutton" />
         </a>
         <div class="podcast__details">
@@ -10,7 +10,7 @@
                 </time>
             </div>
             <h1 class="podcast__header">
-                <a href="#">{{ podcast.title }}</a>
+                <a href="#" @click.prevent="switchPodcast(podcast.id)">{{ podcast.title }}</a>
             </h1>
             <p>
                 {{ podcast.description }}
@@ -20,8 +20,23 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-    props: ['podcast']
+    props: [
+        'podcast'
+    ],
+    methods: {
+        ...mapActions({
+            getPodcast: 'podcasts/getPodcast',
+            setPlaying: 'player/setPlaying'
+        }),
+        switchPodcast (id) {
+            this.getPodcast(id).then((podcast) => {
+                this.setPlaying(podcast)
+            }) 
+        }
+    }
 }
 </script>
 

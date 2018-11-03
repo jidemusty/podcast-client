@@ -1,20 +1,26 @@
 <template>
     <header class="topheader">
         <div class="container">
-            <!-- <p class="welcome">
+            <player v-if="playing" :podcast="playing"></player>
+            <p class="welcome" v-else>
                 Oh, hi. <strong>Choose something to play.</strong>
-            </p> -->
-            <player></player>
+            </p>
         </div>
     </header>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Player from '@/components/player/Player'
 
 export default {
     components: {
         Player
+    },
+    computed: {
+        ...mapGetters({
+            playing: 'player/getPlaying'
+        })
     }
 };
 </script>

@@ -10,12 +10,18 @@ export const getPodcasts = ({ commit }, page = 1) => {
     })
 }
 
-export const getMorePodcasts = ({ commit, state }, page = 1) => {
+export const getMorePodcasts = ({ commit, state }) => {
     api.getPodcasts(state.page.current + 1).then((response) => {
         commit('appendToPodcasts', response.data.data)
         commit('setPageData', {
             current: state.page.current + 1,
             max: response.data.meta.last_page
         })
+    })
+}
+
+export const getPodcast = ({ commit }, id) => {
+    return api.getPodcast(id).then((response) => {
+        return response.data.data
     })
 }
