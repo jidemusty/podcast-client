@@ -54,4 +54,12 @@ export default {
     margin: 0 auto;
     flex: 1;
   }
+
+  .fade-enter-active, .fade-enter-leave {
+    transition: opacity 500ms ease-in-out;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
 </style>

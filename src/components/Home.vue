@@ -1,8 +1,10 @@
 <template>
     <div>
-        <simple></simple>
-        <simple></simple>
-        <simple></simple>
+        <transition-group name="fade">
+            <simple></simple>
+        </transition-group>
+        
+        <a href="#" class="load-more">Load older podcasts</a>
     </div>
 </template>
 
@@ -16,5 +18,16 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+    .load-more {
+        display: block;
+        width: 100%;
+        padding: 20px;
+        background-color: #FFF;
+        text-align: center;
+        margin-bottom: 40px;
+        text-decoration: none;
+        color: inherit;
+        font-weight: 500; 
+    }
 </style>

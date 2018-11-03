@@ -6,7 +6,7 @@
         <div class="podcast__details">
             <div class="podcast__sub">2 days ago</div>
             <h1 class="podcast__header">
-                Lipsum ipsum dolor sit
+                <a href="#">Lipsum ipsum dolor sit</a>
             </h1>
             <p>
                 Irure deserunt sunt anim sit ullamco magna pariatur do.
@@ -35,6 +35,14 @@ export default {
 
         &__sub {
             font-weight: 500;
+        }
+
+        &__header {
+            font-size: 1.6em;
+
+            a {
+                text-decoration: none;
+            }
         }
 
         &__details {
