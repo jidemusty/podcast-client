@@ -1,6 +1,6 @@
 <template>
     <div class="podcast">
-        <a href="#" class="podcast__play" @click.prevent="switchPodcast(podcast.id)">
+        <a href="#" class="podcast__play" @click.prevent="switchPodcast(podcast.id)" :class="{ 'podcast__play--hidden': playing && playing.id === podcast.id }">
             <img src="../../assets/img/play.svg" alt="Play" class="podcast__playbutton" />
         </a>
         <div class="podcast__details">
@@ -20,12 +20,17 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
     props: [
         'podcast'
     ],
+    computed: {
+        ...mapGetters({
+            playing: 'player/getPlaying'
+        })
+    },
     methods: {
         ...mapActions({
             getPodcast: 'podcasts/getPodcast',
@@ -46,7 +51,7 @@ export default {
     .podcast {
         background-color: #FFF;
         display: flex;
-        min-height: 240px;
+        min-height: 280px;
         border-radius: $global-radius;
         box-shadow: 0 5px 10px rgba(#000000, .05);
         margin-bottom: 40px;
