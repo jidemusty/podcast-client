@@ -5,7 +5,9 @@
         </a>
         <div class="podcast__details">
             <div class="podcast__sub">
-                <time :datetime="podcast.created_at">{{ podcast.created_at_human }}</time>
+                <time :datetime="podcast.created_at">
+                    {{ podcast.created_at_human }}
+                </time>
             </div>
             <h1 class="podcast__header">
                 <a href="#">{{ podcast.title }}</a>

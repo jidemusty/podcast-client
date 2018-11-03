@@ -4,7 +4,7 @@
             <simple v-for="podcast in podcasts" :podcast="podcast" :key="podcast.id"></simple>
         </transition-group>
         
-        <a href="#" class="load-more">Load older podcasts</a>
+        <a href="#" class="load-more" v-if="page.hasMore()" @click.prevent="getMorePodcasts">Load older podcasts</a>
     </div>
 </template>
 
@@ -18,12 +18,14 @@ export default {
     },
     computed: {
         ...mapGetters({
-            podcasts: 'podcasts/getPodcasts'
+            podcasts: 'podcasts/getPodcasts',
+            page: 'podcasts/getPage'
         })
     },
     methods: {
         ...mapActions({
-            getPodcasts: 'podcasts/getPodcasts'
+            getPodcasts: 'podcasts/getPodcasts',
+            getMorePodcasts: 'podcasts/getMorePodcasts'
         })
     },
     mounted () {
