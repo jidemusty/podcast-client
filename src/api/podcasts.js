@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 export const getPodcasts = (page = 1) => {
-    return axios.get(`http://podcast.test/podcasts?page=${page}`)
+    return axios.get(`https://enigmatic-anchorage-84107.herokuapp.com/podcasts?page=${page}`)
 }
 
 export const getPodcast = (id) => {
-    return axios.get(`http://podcast.test/podcasts/${id}`)
+    return axios.get(`https://enigmatic-anchorage-84107.herokuapp.com/podcasts/${id}`)
 }
